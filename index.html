@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuber - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .site-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            min-height: 80vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Landing Page */
+        #landing {
+            text-align: center;
+        }
+
+        #landing p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #c0c0c0;
+        }
+
+        /* About Me */
+        #about {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #c0c0c0;
+        }
+
+        /* Socials */
+        #socials {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .social-links {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .social-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .social-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #667eea;
+            transform: translateX(10px);
+        }
+
+        .social-item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-label {
+            font-weight: bold;
+            color: #667eea;
+            min-width: 100px;
+        }
+
+        /* Games */
+        #games {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .game-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #667eea;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .game-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .game-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .game-description {
+            color: #c0c0c0;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            #landing p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo">C</div>
+                <span class="site-name">Cuber</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#landing">Landing page</a></li>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#socials">Socials</a></li>
+                <li><a href="#games">Games</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <section id="landing">
+        <div class="container">
+            <h2>Welcome</h2>
+            <p>
+                Hey, welcome to my about me site. Here you can find my socials and games I make.
+            
+            </p>
+         
+            <H1>Made by cuber</H1>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Hello, im cuber. I have started learnin HTML development and I am improving. I made this site so you can find stuff I make. I like doing coding in my freetime and I like playing games.
+                   I mostly make games with HTML but I decided to make this. I release soruce code for people to use in their HTML. For fun I decide to try to remake games that I see. 
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Socials -->
+    <section id="socials">
+        <div class="container">
+            <h2>Socials</h2>
+            <div class="social-links">
+                <div class="social-item">
+                    <a href="https://discord.gg/ft6fwgvWhW" target="_blank">
+                        <span class="social-label">Discord:</span>
+                        <span>https://discord.gg/ft6fwgvWhW</span>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="https://www.youtube.com/@Cuber" target="_blank">
+                        <span class="social-label">Youtube:</span>
+                        <span>Cuber - YouTube</span>
+                    </a>
+                </div>
+                <div class="social-item">
+                    <a href="https://github.com/cosmic4445" target="_blank">
+                        <span class="social-label">Github:</span>
+                        <span>cosmic4445 (CuberVR)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games -->
+    <section id="games">
+        <div class="container">
+            <h2>Games</h2>
+            <div class="games-grid">
+          
+                <a href="https://cosmic4445.github.io/Tower-Defence/" class="game-card" target="_blank">
+                    <div class="game-logo">🏰</div>
+                    <div class="game-title">Tower Defense</div>
+                    <div class="game-description">Simple tower defense game I made. </div>
+                </a>
+
+     
+                <a href="https://cosmic4445.github.io/Boxable-Platformer-/" class="game-card" target="_blank">
+                    <div class="game-logo">📦</div>
+                    <div class="game-title">Boxable | Platformer </div>
+                    <div class="game-description">Silly platformer where your a box. Made it in a week so its not that good</div>
+                </a>
+                
+               
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
